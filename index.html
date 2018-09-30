@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script>
+            window.onload = function (){
+                var ws = new WebSocket('ws://localhost:3000');
+                var log = document.getElementById("log")
+                ws.onopen = function () {
+                    log.textContent += "ws onopen\r\n";
+                    console.log('ws onopen');
+                    ws.send('from client: hello');
+                };
+                
+                ws.onmessage = function (e) {
+                    log.textContent += "ws onmessage\r\n";
+                    log.textContent += "'from server: '" + e.data + "\r\n";
+
+                console.log('ws onmessage');
+                console.log('from server: ' + e.data);
+                };
+            }
+          </script>
+    </head>
+    <body>
+<h1>日志</h1>
+<textarea id="log" style="width:200px" rows="5"></textarea>
+    </body>
+</html>
