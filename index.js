@@ -15,7 +15,7 @@ var expressWs = require('express-ws')(app);
 // });
 
 app.get('/', function (req, res) {
-  res.sendfile(__dirname + '/index.html');
+  res.sendFile(__dirname + '/index.html');
 });
 
 app.ws('/', function(ws, req) {
